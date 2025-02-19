@@ -1,4 +1,4 @@
-# ESPuino - RFID-controlled Audio Player based on ESP32 with I2S-DAC Supportfor RASPIAUDIO LUXE
+# ESPuino - RFID-controlled Audio Player based on ESP32 with I2S-DAC Support
 
 ![build workflow](https://github.com/biologist79/ESPuino/actions/workflows/test-builds.yml/badge.svg)
 

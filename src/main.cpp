@@ -176,6 +176,14 @@ void setup() {
 	ac.SetVolumeHeadphone(80);
 #endif
 
+
+// Only used for Raspiaudio Muse Speaker
+#if (HAL == 10)
+	i2cBusOne.begin(IIC_DATA, IIC_CLK, 40000);
+
+
+#endif
+
 	// Needs power first
 	SdCard_Init();
 
