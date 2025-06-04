@@ -27,6 +27,7 @@
 #include "Web.h"
 #include "Wlan.h"
 #include "revision.h"
+#include "ES8388Codec.h"
 
 #include <Wire.h>
 
@@ -58,10 +59,13 @@ uint32_t bootCount = 0;
 
 ////////////
 
-#if (HAL == 2)
-	#include "AC101.h"
 static TwoWire i2cBusOne = TwoWire(0);
+#if (HAL == 2)
+#include "AC101.h"
 static AC101 ac(&i2cBusOne);
+#endif
+#if (HAL == 10)
+static ES8388Codec esCodec;
 #endif
 
 // I2C
@@ -179,9 +183,12 @@ void setup() {
 
 // Only used for Raspiaudio Muse Speaker
 #if (HAL == 10)
-	i2cBusOne.begin(IIC_DATA, IIC_CLK, 40000);
-
-
+        if (!esCodec.begin(i2cBusOne, IIC_DATA, IIC_CLK)) {
+                Log_Println("ES8388 init failed!", LOGLEVEL_ERROR);
+        } else {
+                esCodec.setVolume(AudioPlayer_GetInitVolume() * 5, 80);
+                Log_Println("ES8388 codec ready", LOGLEVEL_NOTICE);
+        }
 #endif
 
 	// Needs power first
