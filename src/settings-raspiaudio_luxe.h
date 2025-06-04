@@ -103,6 +103,11 @@
         #define VOLTAGE_READ_PIN            34          // GPIO used to monitor battery-voltage. Change to 35 if you're using Lolin D32 or Lolin D32 pro as it's hard-wired there!
         constexpr float referenceVoltage = 3.30;                  // Voltage between 3.3V and GND-pin at the develboard in battery-mode (disconnect USB!)
         constexpr float offsetVoltage = 0.1;                      // If voltage measured by ESP isn't 100% accurate, you can add an correction-value here
+
+        // Battery Level Thresholds for Muse Luxe when using ADC
+        #define BATTERY_FULL 75
+        #define BATTERY_LOW  25
+        #define BATTERY_PIN  VOLTAGE_READ_PIN        // legacy ADC pin (not the I2C BMS mode)
     #endif
 
     // (optional) For measuring battery-voltage a voltage-divider is necessary. Their values need to be configured here.
