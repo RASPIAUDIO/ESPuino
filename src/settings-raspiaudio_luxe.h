@@ -18,7 +18,18 @@
     #define NUM_INDICATOR_LEDS		1          	// number of Neopixel LEDs (formerly NUM_LEDS)
     #define NEOPIXEL_PIN                22              // Pin for the RGB LED on Muse Luxe
     #define NUMPIXELS                   1               // Muse Luxe has 1 RGB LED
-	//#define RFID_READER_TYPE_MFRC522_I2C  // use MFRC522 via I2C
+        //#define RFID_READER_TYPE_MFRC522_I2C  // use MFRC522 via I2C
+
+    // Disable RFID reader for Muse Luxe
+    #ifdef RFID_READER_TYPE_MFRC522_SPI
+        #undef RFID_READER_TYPE_MFRC522_SPI
+    #endif
+    #ifdef RFID_READER_TYPE_MFRC522_I2C
+        #undef RFID_READER_TYPE_MFRC522_I2C
+    #endif
+    #ifdef RFID_READER_TYPE_PN5180
+        #undef RFID_READER_TYPE_PN5180
+    #endif
 	#undef USEROTARY_ENABLE                // If rotary-encoder is used (don't forget to review WAKEUP_BUTTON if you disable this feature!)
     #undef IR_CONTROL_ENABLE
 
