@@ -231,9 +231,9 @@ static void migrateFromVersion2() {
 			}
 		}
 
-		// clean up old nvs entries
-		delete settings;
-		gPrefsSettings.remove(nvsKey);
+                // clean up old nvs entries
+                delete[] settings;
+                gPrefsSettings.remove(nvsKey);
 	}
 }
 
